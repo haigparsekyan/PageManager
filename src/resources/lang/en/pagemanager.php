@@ -8,7 +8,7 @@ return [
     'meta_keywords' => 'Meta Keywords',
     'meta_title' => 'Meta Title',
     'metas' => 'Metas',
-    'name' => 'Name',
+    'title' => 'Title',
     'open' => 'Open',
     'page' => 'page',
     'page_name' => 'Page name (only seen by admins)',

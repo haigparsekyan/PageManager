@@ -33,7 +33,7 @@ class PageCrudController extends CrudController
 
         $this->crud->addColumn([
                                 'name' => 'title',
-                                'label' => trans('backpack::pagemanager.name'),
+                                'label' => trans('backpack::pagemanager.title'),
                                 ]);
         $this->crud->addColumn([
                                 'name' => 'template',
