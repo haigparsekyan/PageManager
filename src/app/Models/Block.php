@@ -4,14 +4,10 @@ namespace Backpack\PageManager\app\Models;
 
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Block extends Model
 {
     use CrudTrait;
-    use Sluggable;
-    use SluggableScopeHelpers;
 
     /*
     |--------------------------------------------------------------------------
@@ -33,11 +29,6 @@ class Block extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
-    public function getPageLink()
-    {
-        return url($this->slug);
-    }
 
     /*
     |--------------------------------------------------------------------------

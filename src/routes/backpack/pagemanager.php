@@ -40,8 +40,13 @@ Route::group([
         Route::resource('page', $controller);
 
         //Blocks
-        Route::get('blocks/add', $block_controller.'@create');
+        Route::get('blocks/create', $block_controller.'@create');
         Route::get('blocks/{id}/edit', $block_controller.'@edit');
+
+        Route::post('blocks/search', [
+            'as' => 'crud.blocks.search',
+            'uses' => $block_controller.'@search',
+        ]);
 
         Route::resource('blocks', $block_controller);
     });

@@ -13,14 +13,14 @@ class BlocksCrudController extends CrudController
 
     public function setup()
     {
-        $modelClass = config('backpack.pagemanager.page_model_class', 'Backpack\PageManager\app\Models\Page');
+        $modelClass = config('backpack.pagemanager.page_model_block_class', 'Backpack\PageManager\app\Models\Block');
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel($modelClass);
-        $this->crud->setRoute(config('backpack.base.route_prefix').'/page/1/blocks'); //temp
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/blocks');
         $this->crud->setEntityNameStrings('block', 'blocks');
 
         /*
@@ -29,13 +29,8 @@ class BlocksCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-//        $this->crud->setFromDb();
-//        $this->crud->setColumns(['title']);
-        $this->crud->addColumn([
-            'name' => 'title',
-            'label' => trans('backpack::pagemanager.title'),
-        ]);
-
+        $this->crud->setFromDb();
+        $this->crud->setColumns(['title']);
 
         /*
         |--------------------------------------------------------------------------
@@ -56,13 +51,14 @@ class BlocksCrudController extends CrudController
     // -----------------------------------------------
 
 //    // Overwrites the CrudController store() method to add template usage.
-//    public function store(StoreRequest $request)
-//    {
-//        $this->addDefaultPageFields(\Request::input('template'));
-//        $this->useTemplate(\Request::input('template'));
-//
-//        return parent::storeCrud();
-//    }
+    public function store(StoreRequest $request)
+    {
+        // your additional operations before save here
+        $redirect_location = parent::storeCrud($request);
+        // your additional operations after save here
+        // use $this->data['entry'] or $this->crud->entry
+        return $redirect_location;
+    }
 
 //    // Overwrites the CrudController edit() method to add template usage.
 //    public function edit($id, $template = false)
