@@ -32,7 +32,7 @@ class PageCrudController extends CrudController
         */
 
         $this->crud->addColumn([
-                                'name' => 'name',
+                                'name' => 'title',
                                 'label' => trans('backpack::pagemanager.name'),
                                 ]);
         $this->crud->addColumn([
@@ -135,17 +135,8 @@ class PageCrudController extends CrudController
                                 'value' => $template,
                                 'allows_null' => false,
                                 'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6',
+                                    'class' => 'form-group col-md-12',
                                 ],
-                            ]);
-        $this->crud->addField([
-                                'name' => 'name',
-                                'label' => trans('backpack::pagemanager.page_name'),
-                                'type' => 'text',
-                                'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6',
-                                ],
-                                // 'disabled' => 'disabled'
                             ]);
         $this->crud->addField([
                                 'name' => 'title',
