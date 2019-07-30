@@ -61,6 +61,7 @@ class PageCrudController extends CrudController
         | BUTTONS
         |--------------------------------------------------------------------------
         */
+        $this->crud->addButtonFromModelFunction('line', 'blocks', 'getBlocksButton', 'beginning');
         $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
     }
 

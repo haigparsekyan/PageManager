@@ -15,6 +15,7 @@ Route::group([
         'prefix' => config('backpack.base.route_prefix', 'admin'),
     ], function () {
         $controller = config('backpack.pagemanager.admin_controller_class', 'Backpack\PageManager\app\Http\Controllers\Admin\PageCrudController');
+        $block_controller = config('backpack.pagemanager.admin_controller_blocks_class', 'Backpack\PageManager\app\Http\Controllers\Admin\BlocksCrudController');
 
         // Backpack\PageManager routes
         Route::get('page/create/{template}', $controller.'@create');
@@ -37,4 +38,10 @@ Route::group([
         ]);
 
         Route::resource('page', $controller);
+
+        //Blocks
+        Route::get('blocks/add', $block_controller.'@create');
+        Route::get('blocks/{id}/edit', $block_controller.'@edit');
+
+        Route::resource('blocks', $block_controller);
     });
